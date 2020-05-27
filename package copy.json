@@ -22,28 +22,28 @@
     "es6-promisify": "^6.1.1",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
-    "express-validator": "^6.4.1",
+    "express-validator": "^6.4.0",
     "http": "0.0.1-security",
     "md5": "^2.2.1",
     "morgan": "^1.10.0",
     "node-cron": "^2.0.3",
     "node-worker-farm": "^1.3.1",
     "os": "^0.1.1",
+    "pm2": "^4.4.0",
     "redis": "^3.0.2",
     "socket.io": "^2.3.0",
-    "worker-farm": "^1.7.0"
+    "worker-farm": "^1.7.0",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.2.3"
   },
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.9.6",
-    "@babel/node": "^7.8.7",
-    "@babel/preset-env": "^7.9.6",
-    "eslint": "^7.0.0",
-    "eslint-config-airbnb": "^18.1.0",
-    "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.20.0",
-    "nodemon": "^2.0.4"
+    "eslint": "^4.12.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.5.1",
+    "nodemon": "^1.12.1"
   }
 }

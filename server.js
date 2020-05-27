@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 
 
 // Import routes
-import index from './routes/';
+import index from './routes';
 
 const app = express();
 
@@ -35,7 +35,6 @@ app.use((err, req, res, next) => {
 
   // render the error page
   res.status(err.status || 500);
-  console.log(err);
   res.json({ status: 400, message: 'Something Went Wrong', err });
   next();
 });

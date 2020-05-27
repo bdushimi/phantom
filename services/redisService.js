@@ -37,7 +37,7 @@ function redisConnectionError() {
   return error;
 }
 
-const getBusDetails = keyPattern => new Promise((resolve, reject) => {
+const getBusDetails = (keyPattern) => new Promise((resolve, reject) => {
   if (error) {
     reject(error);
   } else {
@@ -58,7 +58,7 @@ const getBusDetails = keyPattern => new Promise((resolve, reject) => {
 });
 
 
-const setBusDetails = busesDetails => new Promise((resolve, reject) => {
+const setBusDetails = (busesDetails) => new Promise((resolve, reject) => {
   if (error) {
     reject(error);
   } else {

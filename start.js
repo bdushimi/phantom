@@ -16,8 +16,7 @@ SocketIO(server);
 config();
 
 
-cron.schedule('*/1 * * * * *', () => {
-  console.log('Moving the bus after 5 secs');
+cron.schedule('*/5 * * * * *', () => {
   if (redisConnectionError !== false) {
     childProcess.fork('./workers/moveBus');
   } else {
@@ -26,8 +25,7 @@ cron.schedule('*/1 * * * * *', () => {
 });
 
 
-cron.schedule('*/2 * * * * *', () => {
-  console.log('Sending the bus updates after 5 secs');
+cron.schedule('*/5 * * * * *', () => {
   if (redisConnectionError !== false) {
     const forkedProcess = childProcess.fork('./workers/sendBusData');
     if (trackRequests.length > 0) forkedProcess.send(trackRequests);
@@ -44,4 +42,3 @@ const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
   console.log(`Express running → PORT ${PORT}`);
 });
-
