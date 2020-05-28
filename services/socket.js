@@ -20,6 +20,7 @@ const SocketIO = (app) => {
 
   io.on('connection', (socket) => {
     eventEmitter.on('bus_updates', (busID, busDetails) => {
+      console.log(`Sending bus_updates ${busID} with ${busDetails}`);
       io.sockets.in(busID).emit('bus_updates', busDetails);
     });
     socket.on('TRACK', (data) => {

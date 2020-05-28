@@ -5,6 +5,7 @@ import childProcess from 'child_process';
 import { SocketIO, trackRequests } from './services/socket';
 import eventEmitter from './services/EventEmitter';
 
+
 // Start our app!
 import server from './server';
 
@@ -16,7 +17,7 @@ config();
 
 
 cron.schedule('*/5 * * * * *', () => {
-  childProcess.fork('./workers/moveBus');
+  const forkedProcess = childProcess.fork('./workers/moveBus');
 });
 
 
