@@ -24,6 +24,7 @@ const SocketIO = (app) => {
       io.sockets.in(busID).emit('bus_updates', busDetails);
     });
     socket.on('TRACK', (data) => {
+      console.log('New Connection');
       if (!trackRequests.includes(data.busID)) {
         trackRequests.push(data.busID);
         socket.join(data.busID);
