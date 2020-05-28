@@ -1,40 +1,39 @@
 // eslint-disable-next-line import/no-named-as-default
 import data from '../utils/data';
-import { getBusDetails, setBusDetails } from '../services/redisService';
-
+import { loadBusesData, getBusDetailsByID, getBusesDetails } from '../utils/database';
 
 class AppController {
   static getIndexPage(req, res) {
     res.json({ status: 200, message: 'Welcome Message' });
   }
 
-  static async loadData(req, res) {
-    const response = await setBusDetails(data);
-    res.json({ response });
+  static async loadBusesData(req, res) {
+    try {
+      const response = await loadBusesData(data);
+      res.json({ response });
+    } catch (error) {
+      res.json({ error: error.message });
+    }
   }
 
-  static async getBusData(req, res) {
+  static async getBusDetailsByID(req, res) {
     const { id } = req.params;
-    let response;
-    switch (id) {
-      case '1':
-        response = await getBusDetails('RAC628A');
-        res.json(response);
-        break;
-      case '2':
-        response = await getBusDetails('RAD739B');
-        res.json(response);
-        break;
-      default:
-        response = 'Invalid ID';
-        res.json({ response });
-        break;
+    console.log(id);
+    try {
+      const response = await getBusDetailsByID(id);
+      res.json(response);
+    } catch (error) {
+      res.json({ error: error.message });
     }
   }
 
   static async getBusesData(req, res) {
-    const response = await getBusDetails('RA?????');
-    res.json({ response });
+    try {
+      const response = await getBusesDetails();
+      res.json({ response });
+    } catch (error) {
+      res.json({ error: error.message });
+    }
   }
 }
 

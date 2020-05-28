@@ -1,8 +1,12 @@
 import socketIO from 'socket.io';
 import http from 'http';
+import { config } from 'dotenv';
 import eventEmitter from './EventEmitter';
 
 const trackRequests = []; // This is the room of requests
+// enable dotenv configurations
+config();
+
 const SocketIO = (app) => {
   http.createServer(app);
   const port = process.env.SOCKET_PORT;

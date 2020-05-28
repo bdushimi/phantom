@@ -4,7 +4,7 @@ export const data = [
     status: 'still',
     name: 'Yutong',
     totalPassengers: 90,
-    speed: 60,
+    speed: 75,
     twoWay: true,
     coverage: 0,
     route: {

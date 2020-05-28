@@ -1,8 +1,8 @@
-import { getBusDetails } from '../services/redisService';
+import { getBusDetailsByID } from '../utils/database';
 
 process.on('message', async (data) => {
-  data.map(async (dataPoint) => {
-    const busDetails = await getBusDetails(dataPoint);
-    process.send({ dataPoint, busDetails });
+  data.map(async (busID) => {
+    const busDetails = await getBusDetailsByID(busID);
+    process.send({ busID, busDetails });
   });
 });

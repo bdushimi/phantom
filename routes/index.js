@@ -6,8 +6,8 @@ const router = express.Router();
 GET home page.
 */
 router.get('/', AppController.getIndexPage);
-router.get('/load', AppController.loadData);
-router.get('/buses/:id', AppController.getBusData);
+router.get('/load', AppController.loadBusesData);
+router.get('/buses/:id', AppController.getBusDetailsByID);
 router.get('/buses', AppController.getBusesData);
 
 

@@ -30,6 +30,7 @@
     "express-session": "^1.17.1",
     "express-validator": "^6.4.1",
     "http": "0.0.1-security",
+    "lokijs": "^1.5.8",
     "md5": "^2.2.1",
     "morgan": "^1.10.0",
     "node-cron": "^2.0.3",
@@ -37,6 +38,7 @@
     "os": "^0.1.1",
     "redis": "^3.0.2",
     "socket.io": "^2.3.0",
+    "sqlite3": "^4.2.0",
     "worker-farm": "^1.7.0"
   },
   "devDependencies": {
