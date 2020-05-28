@@ -2,7 +2,9 @@
 import { getBusesDetails, updateBusDetails } from '../utils/database';
 
 
-const moveBus = (async () => {
+process.on('message', async (data) => {
+  const { movementInProgress } = data;
+  console.log(`MovementInProgress : ${movementInProgress}`);
   const busesDetails = await getBusesDetails();
   // eslint-disable-next-line array-callback-return
   const updatedBusesDetails = busesDetails.map((bus) => {
@@ -52,8 +54,6 @@ const moveBus = (async () => {
 
     return busDetails;
   });
-  updateBusDetails(updatedBusesDetails);
-})();
-
-
-module.exports = moveBus;
+  await updateBusDetails(updatedBusesDetails);
+  process.send({ movementInProgress: false });
+});
