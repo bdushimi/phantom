@@ -2,6 +2,7 @@
 import { config } from 'dotenv';
 import cron from 'node-cron';
 import childProcess from 'child_process';
+import socketio from 'socket.io';
 import { SocketIO, trackRequests } from './services/socket';
 import eventEmitter from './services/EventEmitter';
 
@@ -10,7 +11,7 @@ import eventEmitter from './services/EventEmitter';
 import server from './server';
 
 
-SocketIO(server);
+// SocketIO(server);
 
 // enable dotenv configurations
 config();
@@ -46,6 +47,15 @@ config();
 
 // Start Server
 const PORT = process.env.PORT || 5000;
-server.listen(PORT, () => {
+const socketServer = server.listen(PORT, () => {
   console.log(`Express running → PORT ${PORT}`);
+});
+
+const io = socketio(socketServer);
+io.sockets.on('connection', (socket) => {
+  console.log(`New connection on: ${socket.id}`);
+
+  socket.on('TRACK', (msg) => {
+    console.log(JSON.stringify(msg));
+  });
 });

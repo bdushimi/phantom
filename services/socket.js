@@ -21,7 +21,6 @@ const SocketIO = (app) => {
   io.on('connection', (socket) => {
     console.log(`New Client Connected ${socket.connected}`);
     console.log(`New Client nsp ${socket.nsp.name}`);
-
     eventEmitter.on('bus_updates', (busID, busDetails) => {
       console.log(`Sending bus_updates ${busID} with ${busDetails}`);
       io.sockets.in(busID).emit('bus_updates', busDetails);
