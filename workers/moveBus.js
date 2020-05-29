@@ -3,17 +3,13 @@ import { getBusesDetails, updateBusDetails } from '../utils/database';
 
 
 process.on('message', async (data) => {
-  const { movementInProgress } = data;
-  console.log(`MovementInProgress : ${movementInProgress}`);
   const busesDetails = await getBusesDetails();
   // eslint-disable-next-line array-callback-return
   const updatedBusesDetails = busesDetails.map((bus) => {
     const busDetails = JSON.parse(bus.busDetails);
-    console.log(busDetails.status);
     if (busDetails.status === 'still') {
       // Set the bus status to moving
       busDetails.status = 'moving';
-      console.log(busDetails.status);
       // Update busStops miles & ordering
       if (busDetails.route.destination === busDetails.route.name.substring(0, busDetails.route.destination.length)) {
         // Reverse the order of endpoints

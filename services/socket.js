@@ -14,11 +14,9 @@ const Socket = (server) => {
 
   io.on('connection', (socket) => {
     eventEmitter.on('bus_updates', (busID, busDetails) => {
-      console.log(`Sending bus_updates ${busID} with ${busDetails}`);
       io.sockets.in(busID).emit('bus_updates', busDetails);
     });
     socket.on('TRACK', (data) => {
-      console.log(`New Track Request for ${data}`);
       if (!trackRequests.includes(data.busID)) {
         trackRequests.push(data.busID);
         socket.join(data.busID);

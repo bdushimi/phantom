@@ -25,7 +25,6 @@ cron.schedule('*/2 * * * * *', () => {
 });
 
 moveBusProcess.on('message', (data) => {
-  console.log(`MovementInProgress : ${data.movementInProgress}`);
   movementInProgress = false;
 });
 

@@ -18,7 +18,6 @@ class AppController {
 
   static async getBusDetailsByID(req, res) {
     const { id } = req.params;
-    console.log(id);
     try {
       const response = await getBusDetailsByID(id);
       res.json(response);
