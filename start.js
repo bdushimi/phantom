@@ -15,33 +15,33 @@ SocketIO(server);
 // enable dotenv configurations
 config();
 
-// Child_Process to simulate the bus movement
-let movementInProgress = false;
-const moveBusProcess = childProcess.fork('./workers/moveBus');
+// // Child_Process to simulate the bus movement
+// let movementInProgress = false;
+// const moveBusProcess = childProcess.fork('./workers/moveBus');
 
-// cron job to send bus movement notifications
-cron.schedule('*/2 * * * * *', () => {
-  if (!movementInProgress) {
-    movementInProgress = true;
-    moveBusProcess.send({ movementInProgress: true });
-  }
-});
+// // cron job to send bus movement notifications
+// cron.schedule('*/2 * * * * *', () => {
+//   if (!movementInProgress) {
+//     movementInProgress = true;
+//     moveBusProcess.send({ movementInProgress: true });
+//   }
+// });
 
-moveBusProcess.on('message', (data) => {
-  console.log(`MovementInProgress : ${data.movementInProgress}`);
-  movementInProgress = false;
-});
+// moveBusProcess.on('message', (data) => {
+//   console.log(`MovementInProgress : ${data.movementInProgress}`);
+//   movementInProgress = false;
+// });
 
 
-// Child_Process to send bus movement updates
-const sendBusUpdatesProcess = childProcess.fork('./workers/sendBusData');
-cron.schedule('*/2 * * * * *', () => {
-  if (trackRequests.length > 0) sendBusUpdatesProcess.send(trackRequests);
-});
+// // Child_Process to send bus movement updates
+// const sendBusUpdatesProcess = childProcess.fork('./workers/sendBusData');
+// cron.schedule('*/2 * * * * *', () => {
+//   if (trackRequests.length > 0) sendBusUpdatesProcess.send(trackRequests);
+// });
 
-sendBusUpdatesProcess.on('message', (data) => {
-  eventEmitter.emit('bus_updates', data.busID, data.busDetails);
-});
+// sendBusUpdatesProcess.on('message', (data) => {
+//   eventEmitter.emit('bus_updates', data.busID, data.busDetails);
+// });
 
 
 // Start Server
